@@ -48,5 +48,3 @@ function main() { // main function
 
 // running the program
 main();
-
-console.log("i love brian")
