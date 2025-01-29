@@ -11,27 +11,27 @@ function main() { // main function
             break;
           }
 
-        // Validate that the input is an integer
+        // validating that the input is an integer
         const number = parseInt(input, 10);
         if (isNaN(number)) {
             console.log("Invalid input. Please enter an integer or 'q' to quit.");
             continue;
           }
 
-        // Add the valid integer to the list
+        // adding the valid integer to the list
         integers.push(number);
 }
 
-  // Echo the integers back to the user
+  // displaying integers back to the user
   console.log(`You entered the following integers: ${integers.join(", ")}`);
 
-  // Check if the condition is met
+  // checking if the condition is met
   let conditionMet = false;
-  for (let i = 0; i < integers.length; i++) {
-    for (let j = 0; j < integers.length; j++) {
-      if (i !== j) {
-        const product = integers[i] * integers[j];
-        if (integers.includes(product)) {
+  for (let i = 0; i < integers.length; i++) { // looping through each integer in the array
+    for (let j = 0; j < integers.length; j++) { // using nested loop to compare with every other integer
+      if (i !== j) { // making sure an integer isn't multiplying by itself
+        const product = integers[i] * integers[j]; // computing product of the selected integers
+        if (integers.includes(product)) { // if statement used to find product in array
           console.log(`Condition is met: ${integers[i]} x ${integers[j]} = ${product}`);
           conditionMet = true;
           break;
@@ -41,10 +41,10 @@ function main() { // main function
     if (conditionMet) break;
   }
 
-  if (!conditionMet) {
+  if (!conditionMet) { // for when condition is not met
     console.log("Condition was not met.");
   }
 }
 
-// Run the program
+// running the program
 main();
