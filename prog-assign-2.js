@@ -47,4 +47,4 @@ function main() { // main function
 }
 
 // running the program
-main();
+main(); 
