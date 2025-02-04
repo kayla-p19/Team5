@@ -1,0 +1,16 @@
+# macOS system files
+.DS_Store
+.Trash/
+Library/
+Documents/Library/
+node_modules/
+
+# Other system-related directories
+Applications/
+Desktop/
+Movies/
+Music/
+Pictures/
+Public/
+Sites/
+
