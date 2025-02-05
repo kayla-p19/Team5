@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructor Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Instructor Login</h1>
+        <input type="text" id="instructorId" placeholder="Enter your instructor ID">
+        <input type="password" id="password" placeholder="Enter your password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <script>
+        function login() {
+            let instructorId = document.getElementById('instructorId').value;
+            let password = document.getElementById('password').value;
+
+            if (instructorId.trim() === "" || password.trim() === "") {
+                alert("Please enter your Instructor ID and Password");
+                return;
+            }
+
+            //Store instructor ID in localStorage
+            localStorage.setItem("instructorId", instructorId);
+
+            //redirect to sessions pages
+            window.location.href = "instructorschedule.html";
+        }
+    </script>
+</body>
+</html>

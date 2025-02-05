@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Course Registration</title>
+    <style>
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid;
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Course Registration</h1>
+    </div>
+    <div class="container">
+        <h3> Welcome <span id="studentDisplayId"></span></h3>
+
+        <h4>Enrolled Sessions:</h4>
+        <ul id="enrolledSessions"></ul>
+
+        <h4>Register for a New Session:</h4>
+        <table>
+            <tr>
+                <th>Class</th>
+                <th>Status</th>
+                <th>Add</th>
+            </tr>
+            <tr>
+                <td>MATH 101</td>
+                <td id="seats-MATH-101">45 of 45 seats available</td>
+                <td><button id="btn-MATH-101" onclick="registerSession('MATH 101')">Add</button></td>
+            </tr>
+            <tr>
+                <td>MATH 112</td>
+                <td id="seats-MATH-112">30 of 30 seats available</td>
+                <td><button id="btn-MATH-112" onclick="registerSession('MATH 112')">Add</button></td>
+            </tr>
+            <tr>
+                <td>MATH 150</td>
+                <td id="seats-MATH-150">25 of 25 seats available</td>
+                <td><button id="btn-MATH-150" onclick="registerSession('MATH 150')">Add</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        //load student ID from localStorage
+        document.addEventListener("DOMContentLoaded", function () {
+            let studentId = localStorage.getItem("studentId");
+
+            if (!studentId) {
+                window.location.href = "studentlogin.html";
+            } else {
+                document.getElementById('studentDisplayId').innerText = studentId;
+            }
+        });
+
+        function registerSession(session) {
+            let enrolledList = document.getElementById('enrolledSessions');
+
+            //checking if student is already enrolled
+            let existingSessions = Array.from(enrolledList.getElementsByTagName('li'));
+            for (let item of existingSessions) {
+                if (item.textContent === session) {
+                    alert("You are already enrolled in this session.");
+                    return;
+                }
+            }
+
+            let seatsElement = document.getElementById(`seats-${session.replace(" ", "-")}`);
+            let seatTextParts = seatsElement.textContent.split(" ");
+            let seatsLeft = parseInt(seatTextParts[0]);
+            let totalSeats = parseInt(seatTextParts[2]);
+
+            if(seatsLeft > 0) {
+                seatsLeft--;
+                seatsElement.textContent = `${seatsLeft} of ${totalSeats} seats available`;
+
+                //adding the session to the enrolled list
+                let listItem = document.createElement('li');
+                listItem.textContent = session;
+                enrolledList.appendChild(listItem);
+
+                //disable button if no seats left
+                if (seatsLeft === 0) {
+                    document.getElementById(`btn-${session.replace(" ", "-")}`).disabled = true;
+                }
+            }
+        } 
+    </script>
+</body>
+</html>

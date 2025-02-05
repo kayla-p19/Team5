@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructor Schedule</title>
+</head>
+<body>
+    <div>
+        <h1>Instructor Schedule</h1>
+        <h3>Instructor ID: <span id="instructorDisplayId"></span></h3>
+        <h4>Assigned Sessions for the Current Semester:</h4>
+        <ul>
+            <li>MATH 101</li>
+            <li>MATH 112</li>
+            <li>MATH 150</li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let instructorId = localStorage.getItem("studentId");
+
+            if (!instructorId) {
+                window.location.href = "instructorlogin.html";
+            } else {
+                document.getElementById('instructorDisplayId').innerText = instructorId;
+            }
+        });
+    </script>
+</body>
