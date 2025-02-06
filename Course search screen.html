@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        #courseList {
+            display: none; /* Course list is hidden until search is complete */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Course Search</h2>
+
+    <label for="department">Department:</label>
+    <select id="department">
+        <option value="">All Departments</option>
+        <option value="Mathematics">Mathematics I</option>
+        <option value="Mathematics">Mathematics II</option>
+        <option value="Mathematics">Mathematics III</option>
+    </select>
+
+    <label for="instructor">Instructor:</label>
+    <input type="text" id="instructor" placeholder="Enter Instructor Name">
+
+    <label for="courseNumber">Course Number:</label>
+    <input type="text" id="courseNumber" placeholder="Enter Course Number">
+
+    <button onclick="searchCourses()">Search</button>
+
+    <!-- Course List (Initially Hidden) -->
+    <div id="courseList">
+        <h3>Course List</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Course Number</th>
+                    <th>Instructor</th>
+                    <th>Credit Hours</th>
+                    <th>Prerequisites</th>
+                    <th>Modality</th>
+                    <th>Max Enrollment</th>
+                </tr>
+            </thead>
+            <tbody id="courseTable">
+                <tr data-dept="Mathematics I" data-instructor="Dr. Smith" data-number="MATH101">
+                    <td>Mathematics I</td>
+                    <td>MATH101</td>
+                    <td>Dr. Smith</td>
+                    <td>3</td>
+                    <td>None</td>
+                    <td>Online</td>
+                    <td>45</td>
+                </tr>
+                <tr data-dept="Mathematics II" data-instructor="Dr. Johnson" data-number="MATH112">
+                    <td>Mathematics II</td>
+                    <td>MATH112</td>
+                    <td>Dr. Johnson</td>
+                    <td>4</td>
+                    <td>MATH101</td>
+                    <td>In-Person</td>
+                    <td>30</td>
+                </tr>
+                <tr data-dept="Mathematics III" data-instructor="Dr. Brown" data-number="MATH150">
+                    <td>Mathematics III</td>
+                    <td>MATH150</td>
+                    <td>Dr. Brown</td>
+                    <td>4</td>
+                    <td>MATH112</td>
+                    <td>Hybrid</td>
+                    <td>25</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function searchCourses() {
+        let dept = document.getElementById("department").value.toLowerCase();
+        let instructor = document.getElementById("instructor").value.trim().toLowerCase();
+        let courseNum = document.getElementById("courseNumber").value.trim().toLowerCase();
+        
+        let rows = document.querySelectorAll("#courseTable tr");
+        let courseList = document.getElementById("courseList");
+        let hasResults = false;
+
+        rows.forEach(row => {
+            let rowDept = row.getAttribute("data-dept").toLowerCase();
+            let rowInstructor = row.getAttribute("data-instructor").toLowerCase();
+            let rowNumber = row.getAttribute("data-number").toLowerCase();
+            
+            // Allow partial matches
+            let instructorMatch = instructor === "" || rowInstructor.includes(instructor);
+            let courseMatch = courseNum === "" || rowNumber.includes(courseNum);
+            let deptMatch = dept === "" || rowDept.includes(dept);
+
+            if (deptMatch && instructorMatch && courseMatch) {
+                row.style.display = "";
+                hasResults = true;
+            } else {
+                row.style.display = "none";
+            }
+        });
+
+        // Show the course list only if at least one match is found
+        courseList.style.display = hasResults ? "block" : "none";
+    }
+</script>
+
+</body>
+</html>
