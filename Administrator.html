@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Administrator Home</title>
+    <style>
+        /*Style the header*/
+        .header {
+            background-color: grey;
+            padding: 20px;
+            text-align: center;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <body>
+        <div class="header">
+            <h1>Administrator Dashboard</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#manage-courses">Manage Courses</a></li>
+                <li><a href="#student-records">Student Records</a></li>
+            </ul>
+        </nav>
+        
+        <section id="manage-courses">
+            <h2>Manage Courses</h2>
+            <button onclick="addCourse()">Add Course</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Professor</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Courses will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+        
+        <section id="student-records">
+            <h2>Student Records</h2>
+            <input type="text" placeholder="Search Student...">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Degree Program</th>
+                        <th>Enrolled Courses</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Student data will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+    
+        
+        <script src="script.js"></script>
+    </body>
+</html>
