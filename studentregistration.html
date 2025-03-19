@@ -14,45 +14,140 @@
             padding: 15px;
             text-align: left;
         }
+        .table-container {
+            display: none; /* Hide all tables initially */
+        }
+        nav {
+            padding: 15px;
+            border: 2px solid black;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0px;
+        }
+        nav li {
+            display: inline;
+            padding: 45px;
+        }
+        nav a:link {
+            border: 2px solid black;
+            padding: 15px;
+        }
     </style>
 </head>
 <body>
     <div>
+        <nav>
+            <ul>
+                <li><a href="studenthomepage.html">Home</a></li>
+                <li><a href="studentregistration.html">Course Registration</a></li>
+                <li><a href="studentdegree.html">Degree Progress</a></li>
+                <li><a href="studentplanner.html">Schedule Planner</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div>
         <h1>Course Registration</h1>
     </div>
     <div class="container">
-        <h3> Welcome <span id="studentDisplayId"></span></h3>
+        <h3> Student: <span id="studentDisplayId"></span></h3>
 
-        <h4>Enrolled Sessions:</h4>
+        <h3>Enrolled Sessions:</h3>
         <ul id="enrolledSessions"></ul>
 
-        <h4>Register for a New Session:</h4>
-        <table>
-            <tr>
-                <th>Class</th>
-                <th>Status</th>
-                <th>Add</th>
-            </tr>
-            <tr>
-                <td>MATH 101</td>
-                <td id="seats-MATH-101">45 of 45 seats available</td>
-                <td><button id="btn-MATH-101" onclick="registerSession('MATH 101')">Add</button></td>
-            </tr>
-            <tr>
-                <td>MATH 112</td>
-                <td id="seats-MATH-112">30 of 30 seats available</td>
-                <td><button id="btn-MATH-112" onclick="registerSession('MATH 112')">Add</button></td>
-            </tr>
-            <tr>
-                <td>MATH 150</td>
-                <td id="seats-MATH-150">25 of 25 seats available</td>
-                <td><button id="btn-MATH-150" onclick="registerSession('MATH 150')">Add</button></td>
-            </tr>
-        </table>
+        <h3>Select Subject:</h3>
+        <label for="subjectSelect">Choose a subject:</label>
+        <select id="subjectSelect" onchange="showTable()">
+            <option value="">-- Select --</option>
+            <option value="accounting">Accounting</option>
+            <option value="infosystems">Information Systems</option>
+            <option value="management">Management</option>
+            <option value="marketing">Marketing</option>
+        </select>
+
+        <div id="accounting" class="table-container">
+            <h4>Register for a New Session:</h4>
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>Status</th>
+                    <th>Add</th>
+                </tr>
+                <tr>
+                    <td>Accounting 250</td>
+                    <td id="seats-ACCT-250">35 of 35 seats available</td>
+                    <td><button id="btn-ACCT-250" onclick="registerSession('ACCT 250')">Add</button></td>
+                </tr>
+                <tr>
+                    <td>Accounting 364</td>
+                    <td id="seats-ACCT-364">30 of 30 seats available</td>
+                    <td><button id="btn-ACCT-364" onclick="registerSession('ACCT 364')">Add</button></td>
+                </tr>
+                <tr>
+                    <td>Accounting 406</td>
+                    <td id="seats-ACCT-406">25 of 25 seats available</td>
+                    <td><button id="btn-ACCT-406" onclick="registerSession('ACCT 406')">Add</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="infosystems" class="table-container">
+            <h4>Register for a New Session:</h4>
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>Status</th>
+                    <th>Add</th>
+                </tr>
+                <tr>
+                    <td>IS 200</td>
+                    <td id="seats-IS-200">40 of 40 seats available</td>
+                    <td><button id="btn-IS-200" onclick="registerSession('IS 200')">Add</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="management" class="table-container">
+            <h4>Register for a New Session:</h4>
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>Status</th>
+                    <th>Add</th>
+                </tr>
+                <tr>
+                    <td>Management 300</td>
+                    <td id="seats-MGMT-300">50 of 50 seats available</td>
+                    <td><button id="btn-MGMT-300" onclick="registerSession('MGMT 300')">Add</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="marketing" class="table-container">
+            <h4>Register for a New Session:</h4>
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>Status</th>
+                    <th>Add</th>
+                </tr>
+                <tr>
+                    <td>Marketing 220</td>
+                    <td id="seats-MKT-220">20 of 20 seats available</td>
+                    <td><button id="btn-MKT-220" onclick="registerSession('MKT 220')">Add</button></td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 
     <script>
-        //load student ID from localStorage
+        // Load student ID from localStorage
         document.addEventListener("DOMContentLoaded", function () {
             let studentId = localStorage.getItem("studentId");
 
@@ -63,10 +158,25 @@
             }
         });
 
+        function showTable() {
+            let selectedValue = document.getElementById("subjectSelect").value;
+            let tables = document.querySelectorAll(".table-container");
+
+            // Hide all tables first
+            tables.forEach(function (table) {
+                table.style.display = "none";
+            });
+
+            // Show the selected table if a valid option is chosen
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = "block";
+            }
+        }
+
         function registerSession(session) {
             let enrolledList = document.getElementById('enrolledSessions');
 
-            //checking if student is already enrolled
+            // Checking if the student is already enrolled
             let existingSessions = Array.from(enrolledList.getElementsByTagName('li'));
             for (let item of existingSessions) {
                 if (item.textContent === session) {
@@ -76,25 +186,31 @@
             }
 
             let seatsElement = document.getElementById(`seats-${session.replace(" ", "-")}`);
+            if (!seatsElement) {
+                alert("Error: Seat information not found.");
+                return;
+            }
+
             let seatTextParts = seatsElement.textContent.split(" ");
             let seatsLeft = parseInt(seatTextParts[0]);
             let totalSeats = parseInt(seatTextParts[2]);
 
-            if(seatsLeft > 0) {
+            if (seatsLeft > 0) {
                 seatsLeft--;
                 seatsElement.textContent = `${seatsLeft} of ${totalSeats} seats available`;
 
-                //adding the session to the enrolled list
+                // Adding the session to the enrolled list
                 let listItem = document.createElement('li');
                 listItem.textContent = session;
                 enrolledList.appendChild(listItem);
 
-                //disable button if no seats left
-                if (seatsLeft === 0) {
-                    document.getElementById(`btn-${session.replace(" ", "-")}`).disabled = true;
+                // Disable button if no seats left
+                let buttonElement = document.getElementById(`btn-${session.replace(" ", "-")}`);
+                if (buttonElement && seatsLeft === 0) {
+                    buttonElement.disabled = true;
                 }
             }
-        } 
+        }
     </script>
 </body>
 </html>

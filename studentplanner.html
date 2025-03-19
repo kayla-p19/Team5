@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Planner</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .table-container {
+            display: none;
+        }
+        nav {
+            padding: 15px;
+            border: 2px solid black;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0px;
+        }
+        nav li {
+            display: inline;
+            padding: 45px;
+        }
+        nav a:link {
+            border: 2px solid black;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="studenthomepage.html">Home</a></li>
+                <li><a href="studentregistration.html">Course Registration</a></li>
+                <li><a href="studentdegree.html">Degree Progress</a></li>
+                <li><a href="studentplanner.html">Schedule Planner</a></li>
+            </ul>
+        </nav>
+    </div>
+    <h1>Schedule Planner</h1>
+    <h3>Plan for future class registration by viewing available courses</h3>
+    <label for="tableSelect">Choose a Department:</label>
+    <select id="tableSelect" onchange="showTable()">
+        <option value="">-- Select --</option>
+        <option value="table1">Accounting</option>
+        <option value="table2">Information Systems</option>
+        <option value="table3">Management</option>
+        <option value="table4">Marketing</option>
+    </select>
+
+    <div id="table1" class="table-container">
+        <h3>Department: Accounting</h3>
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Credits</th>
+            </tr>
+            <tr>
+                <td>71664</td>
+                <td>Accounting 250</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>81687</td>
+                <td>Accounting 364</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>91234</td>
+                <td>Accoutning 406</td>
+                <td>2</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="table2" class="table-container">
+        <h3>Department: Information Systems</h3>
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Credits</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="table3" class="table-container">
+        <h3>Department: Management</h3>
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Credits</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="table4" class="table-container">
+        <h3>Department: Marketing</h3>
+        <table>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Credits</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function showTable() {
+            var selectedValue = document.getElementById("tableSelect").value;
+            var tables = document.querySelectorAll(".table-container");
+
+            tables.forEach(function(table) {
+                table.style.display = "none";
+            });
+
+            if (selectedValue) {
+                document.getElementById(selectedValue).style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>

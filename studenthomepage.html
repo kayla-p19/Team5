@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+    <title>Student Home Page</title>
+    <style>
+        nav {
+            padding: 15px;
+            border: 2px solid black;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0px;
+        }
+        nav li {
+            display: inline;
+            padding: 45px;
+        }
+        nav a:link {
+            border: 2px solid black;
+            padding: 15px;
+        }
+        table {
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid;
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="studenthomepage.html">Home</a></li>
+                <li><a href="studentregistration.html">Course Registration</a></li>
+                <li><a href="studentdegree.html">Degree Progress</a></li>
+                <li><a href="studentplanner.html">Schedule Planner</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+        <h1>
+            Notifications
+        </h1>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Message</th>
+                <th>View</th>
+            </tr>
+            <tr>
+                <td>3/18/2025</td>
+                <td>IMPORTANT! You have an academic hold on your account...</td>
+                <td><button>View</button></td>
+            </tr>
+            <tr>
+                <td>3/23/2025</td>
+                <td>IMPORTANT! You have an outsanding balance on your account...</td>
+                <td><button>View</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
