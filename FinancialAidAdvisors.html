@@ -4,59 +4,125 @@
     <meta charset="utf-8" />
     <title>Financial Aid Advisors Home</title>
     <style>
-        /*Style the header*/
+        /* Style the header */
         .header {
             background-color: grey;
             padding: 20px;
             text-align: center;
         }
+
         table {
             width: 50%;
             border-collapse: collapse;
             margin: 20px 0;
         }
+
         th, td {
             border: 1px solid black;
             padding: 8px;
             text-align: center;
         }
+
         th {
             background-color: #f2f2f2;
         }
-    </style>
-    </style>
-    <body>
-        <div class="header">
-            <h1>Student Balances</h1>
-        </div>
 
-        <h2>Students with Outstanding Balances</h2>
-        <table>
-            <tr>
-                <th>Student ID</th>
-                <th>Balance ID</th>
-                <th>Balance ($)</th>
-            </tr>
-            <tr>
-                <td>1561</td>
-                <td>25631</td>
-                <td>156.23</td>
-            </tr>
-            <tr>
-                <td>1821</td>
-                <td>25942</td>
-                <td>1078.75</td>
-            </tr>
-            <tr>
-                <td>1468</td>
-                <td>25476</td>
-                <td>631.09</td>
-            </tr>
-            <tr>
-                <td>1798</td>
-                <td>25378</td>
-                <td>20.78</td>
-            </tr>
-        </table>
-    </body>
-    
+        /* Style the note section */
+        .note-section {
+            float: right;
+            width: 30%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .saved-notes {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Financial Aid Advisor Dashboard</h1>
+        <h2>Student Balances</h2>
+    </div>
+
+    <h2>Students with Outstanding Balances</h2>
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Balance ID</th>
+            <th>Balance ($)</th>
+        </tr>
+        <tr>
+            <td>1561</td>
+            <td>25631</td>
+            <td>156.23</td>
+        </tr>
+        <tr>
+            <td>1821</td>
+            <td>25942</td>
+            <td>1078.75</td>
+        </tr>
+        <tr>
+            <td>1468</td>
+            <td>25476</td>
+            <td>631.09</td>
+        </tr>
+        <tr>
+            <td>1798</td>
+            <td>25378</td>
+            <td>20.78</td>
+        </tr>
+    </table>
+
+    <!-- Note section -->
+    <div class="note-section">
+        <h3>Take Notes</h3>
+        <textarea id="noteBox" placeholder="Write your notes here..."></textarea>
+        <button onclick="saveNote()">Save Note</button>
+
+        <div class="saved-notes" id="savedNotes">
+            <!-- Saved notes will appear here -->
+        </div>
+    </div>
+
+    <script>
+        function saveNote() {
+            var noteBox = document.getElementById('noteBox');
+            var savedNotesDiv = document.getElementById('savedNotes');
+
+            if (noteBox.value.trim() !== "") {
+                var note = document.createElement('p');
+                note.textContent = noteBox.value;
+                savedNotesDiv.appendChild(note);
+                noteBox.value = ""; // Clear the text box
+            } else {
+                alert("Please write something in the note box.");
+            }
+        }
+    </script>
+</body>
+</html>
