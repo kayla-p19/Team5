@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+    <title>Administrator Home Page</title>
+    <style>
+        nav {
+            padding: 15px;
+            border: 2px solid black;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0px;
+        }
+        nav li {
+            display: inline;
+            padding: 45px;
+        }
+        nav a:link {
+            border: 2px solid black;
+            padding: 15px;
+        }
+        table {
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid;
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="adminhomepage.html">Home</a></li>
+                <li><a href="AdministratorCourse.html">Course Management</a></li>
+                <li><a href="StudentRecordsPage.html">Student Records</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+        <h1>
+            Notifications
+        </h1>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Message</th>
+                <th>View</th>
+            </tr>
+            <tr>
+                <td>3/20/2025</td>
+                <td>Hi, let's schedule a meeting about the department's classes...</td>
+                <td><button>View</button></td>
+            </tr>
+            <tr>
+                <td>3/30/2025</td>
+                <td>IMPORTANT! Student is not on track to graduate on time...</td>
+                <td><button>View</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html> 
