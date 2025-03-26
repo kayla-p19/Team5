@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Student Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f2f2f2;
+        }
+
+        .header {
+            background-color: grey;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #ddd;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            margin: 40px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+        /* your other nav styles */
+    }
+
+    /* Insert search bar style at the bottom of this style block */
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    nav ul li a.active {
+    text-decoration: underline;
+    color: #000; /* Optional: makes sure it stays black */
+}
+
+
+        h2 {
+            text-align: center;
+        }
+        button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #333;
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Administrator Dashboard</h1>
+        <h2>Student Records</h2>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="homescreen.html">Home</a></li>
+            <li><a href="StudentRecordsPage.html" class="active">Student Records</a></li>
+            <li><a href="AdministratorCourse.html">Student Courses</a></li>
+            <li><a href="StudentTableData.html">View Student List</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Manage Student Records</h2>
+        <!-- Future content like inputs, search, and notes will go here -->
+        <label for="searchStudent">Search Student:</label>
+        <input type="text" id="searchStudent" placeholder="Enter student name or ID"> 
+        <button type="button" onclick="handleSearch()">Enter</button> 
+        <p id="searchMessage" style="color: red; font-weight: bold;"></p> 
+        <div id="studentResult" style="margin-top: 15px;"></div>     
+    </div>
+    <script>
+        function handleSearch() {
+            const messageElement = document.getElementById("searchMessage");
+            messageElement.textContent = "Student not found.";
+        }
+    </script>  
+    <script>
+        const students = [
+            {
+                id: "1561",
+                first: "Peter",
+                last: "Smith",
+                email: "smith07@vcu.edu",
+                year: "3",
+                major: "Finance",
+                link: "https://bulletin.vcu.edu/undergraduate/business/finance-insurance-real-estate/finance-bs/"
+            },
+            {
+                id: "1374",
+                first: "David",
+                last: "Burns",
+                email: "burns01@vcu.edu",
+                year: "2",
+                major: "Marketing",
+                link: "https://bulletin.vcu.edu/undergraduate/business/marketing/marketing-bs-concentration-general-marketing/"
+            },
+            {
+                id: "1648",
+                first: "Lily",
+                last: "Davidson",
+                email: "davidson05@vcu.edu",
+                year: "1",
+                major: "Management",
+                link: "https://bulletin.vcu.edu/undergraduate/business/management/business-bs-concentration-managementbusiness-administration/"
+            },
+            {
+                id: "1945",
+                first: "Mary",
+                last: "Collins",
+                email: "collins08@vcu.edu",
+                year: "3",
+                major: "Information Systems",
+                link: "https://bulletin.vcu.edu/undergraduate/business/information-systems/information-systems-bs/"
+            },
+            {
+                id: "1821",
+                first: "Mark",
+                last: "Oliver",
+                email: "oliver03@vcu.edu",
+                year: "3",
+                major: "Information Systems",
+                link: "https://bulletin.vcu.edu/undergraduate/business/information-systems/information-systems-bs/"
+            },
+            {
+                id: "1865",
+                first: "Riley",
+                last: "Waters",
+                email: "waters01@vcu.edu",
+                year: "2",
+                major: "Marketing",
+                link: "https://bulletin.vcu.edu/undergraduate/business/marketing/marketing-bs-concentration-general-marketing/"
+            },
+            {
+                id: "1468",
+                first: "Kenny",
+                last: "Lin",
+                email: "lin06@vcu.edu",
+                year: "4",
+                major: "Accounting",
+                link: "https://bulletin.vcu.edu/undergraduate/business/accounting/accounting-bs/"
+            },
+            {
+                id: "1798",
+                first: "Mai",
+                last: "Kurosawa",
+                email: "kurosawa@vcu.edu",
+                year: "3",
+                major: "Accounting",
+                link: "https://bulletin.vcu.edu/undergraduate/business/accounting/accounting-bs/"
+            },
+            {
+                id: "1693",
+                first: "James",
+                last: "Walsh",
+                email: "walsh01@vcu.edu",
+                year: "1",
+                major: "Management",
+                link: "https://bulletin.vcu.edu/undergraduate/business/management/business-bs-concentration-managementbusiness-administration/"
+            },
+            {
+                id: "1267",
+                first: "Winnie",
+                last: "Gonzalez",
+                email: "gonzalez@vcu.edu",
+                year: "3",
+                major: "Marketing",
+                link: "https://bulletin.vcu.edu/undergraduate/business/marketing/marketing-bs-concentration-general-marketing/"
+            }
+        ];
+    
+        function handleSearch() {
+            const input = document.getElementById("searchStudent").value.trim().toLowerCase();
+            const message = document.getElementById("searchMessage");
+            const resultDiv = document.getElementById("studentResult");
+            resultDiv.innerHTML = "";
+            message.textContent = "";
+    
+            const found = students.find(student =>
+                student.first.toLowerCase() === input ||
+                student.last.toLowerCase() === input ||
+                (student.first + " " + student.last).toLowerCase() === input
+            );
+    
+            if (found) {
+                resultDiv.innerHTML = `
+                    <strong>Student Found:</strong><br>
+                    Name: ${found.first} ${found.last}<br>
+                    Email: ${found.email}<br>
+                    Year: ${found.year}<br>
+                    Major: ${found.major}<br>
+                    <a href="${found.link}" target="_blank" style="display:inline-block; margin-top:10px; color: white; background-color: grey; padding: 6px 12px; border-radius: 5px; text-decoration: none;">View Degree Requirements</a>
+                `;
+            } else {
+                message.textContent = "Student not found.";
+            }
+        }
+    </script>    
+</body>
+</html>
+
