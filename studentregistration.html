@@ -17,42 +17,65 @@
         .table-container {
             display: none; /* Hide all tables initially */
         }
-        nav {
-            padding: 15px;
-            border: 2px solid black;
-            font-size: 20px;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f2f2f2;
+        }
+        .header {
+            background-color: grey;
+            padding: 20px;
+            text-align: center;
+            color: white;
         }
         nav ul {
             list-style-type: none;
-            padding: 0px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #ddd;
+            margin: 0;
         }
-        nav li {
-            display: inline;
-            padding: 45px;
+        nav ul li {
+            margin: 10px 20px;
         }
-        nav a:link {
-            border: 2px solid black;
-            padding: 15px;
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            margin: 40px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        nav ul li a.active {
+            text-decoration: underline;
+            color: #000;
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>Student Dashboard</h1>
+        <h2>Course Registration</h2>
+    </div>
     <div>
         <nav>
             <ul>
                 <li><a href="studenthomepage.html">Home</a></li>
-                <li><a href="studentregistration.html">Course Registration</a></li>
+                <li><a href="studentregistration.html" class="active">Course Registration</a></li>
                 <li><a href="studentdegree.html">Degree Progress</a></li>
                 <li><a href="studentplanner.html">Schedule Planner</a></li>
             </ul>
         </nav>
-    </div>
-    <div>
-        <h1>Course Registration</h1>
     </div>
     <div class="container">
         <h3> Student: <span id="studentDisplayId"></span></h3>
@@ -105,9 +128,19 @@
                     <th>Add</th>
                 </tr>
                 <tr>
-                    <td>Information Systems 200</td>
-                    <td id="seats-IS-200">40 of 40 seats available</td>
-                    <td><button id="btn-IS-200" onclick="registerSession('IS 200')">Add</button></td>
+                    <td>Information Systems 364</td>
+                    <td id="seats-IS-364">27 of 27 seats available</td>
+                    <td><button id="btn-IS-364" onclick="registerSession('IS 364')">Add</button></td>
+                </tr>
+                <tr>
+                    <td>Information Systems 450</td>
+                    <td id="seats-IS-450">29 of 29 seats available</td>
+                    <td><button id="btn-IS-450" onclick="registerSession('IS 450')">Add</button></td>
+                </tr>
+                <tr>
+                    <td>Information Systems 465</td>
+                    <td id="seats-IS-465">30 of 30 seats available</td>
+                    <td><button id="btn-IS-465" onclick="registerSession('IS 465')">Add</button></td>
                 </tr>
             </table>
         </div>
@@ -121,9 +154,19 @@
                     <th>Add</th>
                 </tr>
                 <tr>
-                    <td>Management 300</td>
-                    <td id="seats-MGMT-300">50 of 50 seats available</td>
-                    <td><button id="btn-MGMT-300" onclick="registerSession('MGMT 300')">Add</button></td>
+                    <td>Management 101</td>
+                    <td id="seats-MGMT-101">25 of 25 seats available</td>
+                    <td><button id="btn-MGMT-101" onclick="registerSession('MGMT 101')">Add</button></td>
+                </tr>
+                <tr>
+                    <td>Management 205</td>
+                    <td id="seats-MGMT-205">28 of 28 seats available</td>
+                    <td><button id="btn-MGMT-205" onclick="registerSession('MGMT 205')">Add</button></td>
+                </tr>
+                <tr>
+                    <td>Management 210</td>
+                    <td id="seats-MGMT-210">40 of 40 seats available</td>
+                    <td><button id="btn-MGMT-210" onclick="registerSession('MGMT 210')">Add</button></td>
                 </tr>
             </table>
         </div>
@@ -137,9 +180,19 @@
                     <th>Add</th>
                 </tr>
                 <tr>
-                    <td>Marketing 220</td>
-                    <td id="seats-MKT-220">20 of 20 seats available</td>
-                    <td><button id="btn-MKT-220" onclick="registerSession('MKT 220')">Add</button></td>
+                    <td>Marketing 264</td>
+                    <td id="seats-MKTG-264">15 of 15 seats available</td>
+                    <td><button id="btn-MKTG-264" onclick="registerSession('MKTG 264')">Add</button></td>
+                </tr>
+                <tr>
+                    <td>Marketing 310</td>
+                    <td id="seats-MKTG-310">32 of 32 seats available</td>
+                    <td><button id="btn-MKTG-310" onclick="registerSession('MKTG 310')">Add</button></td>
+                </tr>
+                <tr>
+                    <td>Marketing 320</td>
+                    <td id="seats-MKTG-320">20 of 20 seats available</td>
+                    <td><button id="btn-MKTG-320" onclick="registerSession('MKTG 320')">Add</button></td>
                 </tr>
             </table>
         </div>
