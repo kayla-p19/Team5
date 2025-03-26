@@ -5,10 +5,35 @@
     <title>Administrator Home</title>
     <style>
         /* Style the header */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f2f2f2;
+        }
         .header {
             background-color: grey;
             padding: 20px;
             text-align: center;
+            color: white;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #ddd;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 10px 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
         }
         table {
             width: 50%;
@@ -24,32 +49,16 @@
             background-color: #f2f2f2;
         }
         #filters {
+            margin-top: 10px;
             margin-bottom: 20px;
         }
         #filters input {
+            margin-top: 10px;
             margin-right: 10px;
         }
-
-        /* Style the navigation to be horizontal */
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex; /* Use flexbox to arrange items horizontally */
-            justify-content: center; /* Center the links horizontally */
-        }
-
-        nav ul li {
-            margin-right: 20px; /* Space between the links */
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-        }
-
-        nav ul li a:hover {
-            text-decoration: underline; /* Add a hover effect */
+        nav ul li a.active {
+            text-decoration: underline;
+            color: #000;
         }
     </style>
 </head>
@@ -58,12 +67,16 @@
         <h1>Administrator Dashboard</h1>
         <h2>Course Management</h2>
     </div>
-    <nav>
-        <ul>
-            <li><a href="adminhomepage.html">Home</a></li>
-            <li><a href="#manage-students">Student Records</a></li>
-        </ul>
-    </nav>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="adminhomepage.html">Home</a></li>
+                <li><a href="StudentRecordsPage.html">Student Records</a></li>
+                <li><a href="AdministratorCourse.html" class="active">Student Courses</a></li>
+                <li><a href="StudentTableData.html">View Student List</a></li>
+            </ul>
+        </nav>
+    </div>
     
     <section id="manage-courses">
         <!-- Filter Inputs for Course and Professor -->
