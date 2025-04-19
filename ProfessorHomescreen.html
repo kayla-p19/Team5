@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Professor Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 40px;
+    }
+    .header {
+      background-color: grey;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      background-color: #ddd;
+    }
+    nav ul li {
+      margin: 10px 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 900px;
+      background: white;
+      padding: 30px;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #e2e2e2;
+    }
+    .login-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Professor Dashboard</h1>
+    <h2 id="profName">My Assigned Courses</h2>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="homescreen.html">Home</a></li>
+      <li><a href="#" class="active">My Courses</a></li>
+    </ul>
+  </nav>
+
+  <div class="login-container">
+    <label for="professorSelect">Choose Professor:</label>
+    <select id="professorSelect">
+      <option value="">-- Select --</option>
+      <option value="1001">John Doe</option>
+      <option value="1002">Jane Smith</option>
+      <option value="1003">Alice Johnson</option>
+      <option value="1004">Bob Brown</option>
+      <option value="1005">Charlie Davis</option>
+    </select>
+    <button onclick="loadProfessorData()">Load Dashboard</button>
+  </div>
+
+  <div class="container">
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>Semester</th>
+          <th>Max Students</th>
+          <th>Enrolled Students</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Filled dynamically with JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const professors = {
+      '1001': { name: 'John Doe', courses: [
+        { name: 'INFO 465 - Database Management', semester: 'Spring 2025', max: 30, students: ['Mark Oliver', 'James Walsh'] },
+        { name: 'INFO 450 - Web Development', semester: 'Spring 2025', max: 29, students: ['Mark Oliver'] }
+      ] },
+      '1002': { name: 'Jane Smith', courses: [
+        { name: 'MKTG 310 - Digital Marketing', semester: 'Spring 2025', max: 32, students: ['Peter Smith'] },
+        { name: 'MKTG 320 - Advertising Concepts', semester: 'Spring 2025', max: 20, students: [] }
+      ] },
+      '1003': { name: 'Alice Johnson', courses: [
+        { name: 'INFO 364 - System Analysis', semester: 'Spring 2025', max: 27, students: ['David Burns'] }
+      ] },
+      '1004': { name: 'Bob Brown', courses: [
+        { name: 'MGMT 101 - Intro to Management', semester: 'Spring 2025', max: 25, students: [] }
+      ] },
+      '1005': { name: 'Charlie Davis', courses: [
+        { name: 'ACCT 406 - Accounting', semester: 'Spring 2025', max: 25, students: ['Kenny Lin'] }
+      ] },
+    };
+
+    function loadProfessorData() {
+      const instructorID = document.getElementById("professorSelect").value;
+      const professor = professors[instructorID];
+      const tbody = document.querySelector("#courseTable tbody");
+      const header = document.getElementById("profName");
+      tbody.innerHTML = "";
+
+      if (professor) {
+        header.textContent = `Welcome, Professor ${professor.name}`;
+        professor.courses.forEach(course => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${course.name}</td>
+            <td>${course.semester}</td>
+            <td>${course.max}</td>
+            <td>${course.students.join(', ') || 'None yet'}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } else {
+        header.textContent = "Instructor not found. Please select your name.";
+        tbody.innerHTML = "";
+      }
+    }
+  </script>
+</body>
+</html>
+
