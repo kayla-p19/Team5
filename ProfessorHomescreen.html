@@ -100,6 +100,8 @@
         <tr>
           <th>Course Name</th>
           <th>Semester</th>
+          <th>Days</th>
+          <th>Time</th>
           <th>Max Students</th>
           <th>Enrolled Students</th>
         </tr>
@@ -113,21 +115,26 @@
   <script>
     const professors = {
       '1001': { name: 'John Doe', courses: [
-        { name: 'INFO 465 - Database Management', semester: 'Spring 2025', max: 30, students: ['Mark Oliver', 'James Walsh'] },
-        { name: 'INFO 450 - Web Development', semester: 'Spring 2025', max: 29, students: ['Mark Oliver'] }
+        { name: 'INFO 465 - Database Management', semester: 'Spring 2025', days: 'M/W/F', time: '9:00 AM - 9:50 AM', max: 30, students: ['Mark Oliver', 'James Walsh', 'Riley Waters'] },
+        { name: 'INFO 450 - Web Development', semester: 'Spring 2025', days: 'THUR', time: '10:00 AM - 12:40 PM', max: 29, students: ['Mark Oliver', 'James Walsh'] }
       ] },
       '1002': { name: 'Jane Smith', courses: [
-        { name: 'MKTG 310 - Digital Marketing', semester: 'Spring 2025', max: 32, students: ['Peter Smith'] },
-        { name: 'MKTG 320 - Advertising Concepts', semester: 'Spring 2025', max: 20, students: [] }
+        { name: 'MKTG 310 - Digital Marketing', semester: 'Spring 2025', days: 'M/W/F', time: '12:00 PM - 12:50 PM', max: 32, students: ['Peter Smith'] },
+        { name: 'MKTG 320 - Advertising Concepts', semester: 'Spring 2025', days: 'TUES/THURS', time: '1:00 PM - 2:15 PM', max: 20, students: ['Lily Davidson'] },
+        { name: 'MKTG 264 - Marketing Basics', semester: 'Spring 2025', days: 'M/W', time: '3:00 PM - 4:15 PM', max: 15, students: ['Mary Collins', 'Mai Kurosawa'] }
       ] },
       '1003': { name: 'Alice Johnson', courses: [
-        { name: 'INFO 364 - System Analysis', semester: 'Spring 2025', max: 27, students: ['David Burns'] }
+        { name: 'INFO 364 - System Analysis', semester: 'Spring 2025', days: 'M/W/F', time: '11:00 AM - 11:50 AM', max: 27, students: ['David Burns'] }
       ] },
       '1004': { name: 'Bob Brown', courses: [
-        { name: 'MGMT 101 - Intro to Management', semester: 'Spring 2025', max: 25, students: [] }
+        { name: 'MGMT 101 - Intro to Management', semester: 'Spring 2025', days: 'F', time: '9:00 AM - 11:40 AM', max: 25, students: ['Mai Kurosawa'] },
+        { name: 'MGMT 205 - Operations', semester: 'Spring 2025', days: 'THURS', time: '10:00 AM - 11:15 AM', max: 28, students: ['Riley Waters'] },
+        { name: 'MGMT 210 - Leadership', semester: 'Spring 2025', days: 'M/W/F', time: '12:00 PM - 12:50 PM', max: 40, students: ['Winnie Gonzalez'] }
       ] },
       '1005': { name: 'Charlie Davis', courses: [
-        { name: 'ACCT 406 - Accounting', semester: 'Spring 2025', max: 25, students: ['Kenny Lin'] }
+        { name: 'ACCT 250 - Intro to Accounting', semester: 'Spring 2025', days: 'TUES/THUR', time: '1:00 PM - 2:15 PM', max: 35, students: ['David Burns'] },
+        { name: 'ACCT 364 - Financial Reporting', semester: 'Spring 2025', days: 'THURS', time: '3:00 PM - 4:15 AM', max: 30, students: ['Kenny Lin', 'Mai Kurosawa'] },
+        { name: 'ACCT 406 - Accounting', semester: 'Spring 2025', days: 'M/W/F', time: '5:00 PM - 5:50 PM', max: 25, students: ['Winnie Gonzalez'] }
       ] },
     };
 
@@ -145,6 +152,8 @@
           row.innerHTML = `
             <td>${course.name}</td>
             <td>${course.semester}</td>
+            <td>${course.days}</td>
+            <td>${course.time}</td>
             <td>${course.max}</td>
             <td>${course.students.join(', ') || 'None yet'}</td>
           `;
