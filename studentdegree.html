@@ -47,6 +47,17 @@
             text-decoration: underline;
             color: #000;
         }
+        table {
+            margin-top: 10px;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th, td {
+            border: 2px solid;
+            padding: 15px;
+            text-align: left;
+        }
     </style>
 <body>
     <div class="header">
@@ -69,9 +80,20 @@
         <h3>Degree:</h3> <p>Information Systems</p>
         <h3>Year:</h3> <p>3</p>
         <h3>Progress:</h3> <p>78%</p>
-        <h3>Currently Enrolled-In Courses:</h3>
-        <p>Information Systems 465</p>
-        <p>Information Systems 450</p>
+        <table>
+            <tr>
+                <th>Current Courses</th>
+            </tr>
+            <tr>
+                <td>Programming</td>
+            </tr>
+            <tr>
+                <td>Database Systems</td>
+            </tr>
+            <tr>
+                <td>Business Law</td>
+            </tr>
+        </table>
     </div>
 </body>
 </head>
