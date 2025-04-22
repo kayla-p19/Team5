@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degree Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f2f2f2;
+        }
+        .header {
+            background-color: grey;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #ddd;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 10px 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            margin: 40px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        nav ul li a.active {
+            text-decoration: underline;
+            color: #000;
+        }
+        table {
+            margin-top: 10px;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th, td {
+            border: 2px solid; 
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Student Dashboard</h1>
+        <h2>Degree Progress</h2>
+    </div>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="/student-homepage">Home</a></li>
+                <li><a href="/register-courses">Course Registration</a></li>
+                <li><a href="/student-degree" class="active">Degree Progress</a></li>
+                <li><a href="/student-planner">Schedule Planner</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <h3>Student:</h3> <p>{{ student.S_First_Name }} {{ student.S_Last_Name }}</p>
+        <h3>Student ID:</h3> <p>{{ student.StudentID }}</p>
+        <h3>Degree:</h3> <p>{{ student.Major }}</p>
+        <h3>Year:</h3> <p>{{ student.Year }}</p>
+        <h3>Progress:</h3> <p>78%</p>
+        <table>
+            <tr>
+                <th>Current Courses</th>
+            </tr>
+            <tr>
+                <td>{{ student.Class1 }}</td>
+            </tr>
+            <tr>
+                <td>{{ student.Class2 }}</td>
+            </tr>
+            <tr>
+                <td>{{ student.Class3 }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
